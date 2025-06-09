@@ -55,6 +55,30 @@ build CMakeFiles/ProyectoTEL102.dir/main.cpp.o: CXX_COMPILER__ProyectoTEL102_uns
   OBJECT_DIR = CMakeFiles/ProyectoTEL102.dir
   OBJECT_FILE_DIR = CMakeFiles/ProyectoTEL102.dir
 
+build CMakeFiles/ProyectoTEL102.dir/metrounit.cpp.o: CXX_COMPILER__ProyectoTEL102_unscanned_Debug /home/ssobarzo/ProyectoTEL102/metrounit.cpp || cmake_object_order_depends_target_ProyectoTEL102
+  DEP_FILE = CMakeFiles/ProyectoTEL102.dir/metrounit.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/ProyectoTEL102.dir
+  OBJECT_FILE_DIR = CMakeFiles/ProyectoTEL102.dir
+
+build CMakeFiles/ProyectoTEL102.dir/passenger.cpp.o: CXX_COMPILER__ProyectoTEL102_unscanned_Debug /home/ssobarzo/ProyectoTEL102/passenger.cpp || cmake_object_order_depends_target_ProyectoTEL102
+  DEP_FILE = CMakeFiles/ProyectoTEL102.dir/passenger.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/ProyectoTEL102.dir
+  OBJECT_FILE_DIR = CMakeFiles/ProyectoTEL102.dir
+
+build CMakeFiles/ProyectoTEL102.dir/station.cpp.o: CXX_COMPILER__ProyectoTEL102_unscanned_Debug /home/ssobarzo/ProyectoTEL102/station.cpp || cmake_object_order_depends_target_ProyectoTEL102
+  DEP_FILE = CMakeFiles/ProyectoTEL102.dir/station.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/ProyectoTEL102.dir
+  OBJECT_FILE_DIR = CMakeFiles/ProyectoTEL102.dir
+
+build CMakeFiles/ProyectoTEL102.dir/timecontroller.cpp.o: CXX_COMPILER__ProyectoTEL102_unscanned_Debug /home/ssobarzo/ProyectoTEL102/timecontroller.cpp || cmake_object_order_depends_target_ProyectoTEL102
+  DEP_FILE = CMakeFiles/ProyectoTEL102.dir/timecontroller.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/ProyectoTEL102.dir
+  OBJECT_FILE_DIR = CMakeFiles/ProyectoTEL102.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target ProyectoTEL102
@@ -63,7 +87,7 @@ build CMakeFiles/ProyectoTEL102.dir/main.cpp.o: CXX_COMPILER__ProyectoTEL102_uns
 #############################################
 # Link the executable ProyectoTEL102
 
-build ProyectoTEL102: CXX_EXECUTABLE_LINKER__ProyectoTEL102_Debug CMakeFiles/ProyectoTEL102.dir/main.cpp.o
+build ProyectoTEL102: CXX_EXECUTABLE_LINKER__ProyectoTEL102_Debug CMakeFiles/ProyectoTEL102.dir/main.cpp.o CMakeFiles/ProyectoTEL102.dir/metrounit.cpp.o CMakeFiles/ProyectoTEL102.dir/passenger.cpp.o CMakeFiles/ProyectoTEL102.dir/station.cpp.o CMakeFiles/ProyectoTEL102.dir/timecontroller.cpp.o
   FLAGS = -DQT_QML_DEBUG -g
   OBJECT_DIR = CMakeFiles/ProyectoTEL102.dir
   POST_BUILD = :
