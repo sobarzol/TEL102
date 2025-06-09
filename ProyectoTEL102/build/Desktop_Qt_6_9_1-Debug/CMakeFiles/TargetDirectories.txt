@@ -1,7 +1,0 @@
-/home/ssobarzo/ProyectoTEL102/build/Desktop_Qt_6_9_1-Debug/CMakeFiles/ProyectoTEL102.dir
-/home/ssobarzo/ProyectoTEL102/build/Desktop_Qt_6_9_1-Debug/CMakeFiles/edit_cache.dir
-/home/ssobarzo/ProyectoTEL102/build/Desktop_Qt_6_9_1-Debug/CMakeFiles/rebuild_cache.dir
-/home/ssobarzo/ProyectoTEL102/build/Desktop_Qt_6_9_1-Debug/CMakeFiles/list_install_components.dir
-/home/ssobarzo/ProyectoTEL102/build/Desktop_Qt_6_9_1-Debug/CMakeFiles/install.dir
-/home/ssobarzo/ProyectoTEL102/build/Desktop_Qt_6_9_1-Debug/CMakeFiles/install/local.dir
-/home/ssobarzo/ProyectoTEL102/build/Desktop_Qt_6_9_1-Debug/CMakeFiles/install/strip.dir
