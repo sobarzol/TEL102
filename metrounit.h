@@ -3,24 +3,30 @@
 
 #include <vector>
 #include <string>
-#include "station.h"
+using namespace std;
+
+class Station;
+class Passenger;
 
 class MetroUnit
 {
 public:
-    MetroUnit(int capacity);
+    MetroUnit();
+    MetroUnit(int capacity, Station *initial_station);
     int getCapacity();
     Station getActualStation();
     string getDirection();
     void moveToNextStation();
     void setOn(string direction);
-
+    void ocuppyMetro(Passenger *pasajero);
+    int time_in_transit;
+    string state;
 private:
     int capacity;
-    string state:
-    vector<Passenger> ocupation;
-    Station actual_station;
+    vector<Passenger*> Ocupation;
+    Station *actual_station;
     string actual_direction;
+
 };
 
 #endif // METROUNIT_H

@@ -3,23 +3,28 @@
 
 #include <vector>
 #include <string>
+using namespace std;
 
+class MetroUnit;
+class Passenger;
 
 class Station
 {
 public:
-    static vector<Station> Stations;
+    Station();
+    static int Time_Between_Stations[19];
     Station(string name);
     int getTimeToNextMetro(string direction);
-    void getPeopleIntoMetro();
     void setFlow(string flow);
+    vector<Passenger*> AwaitingPeople;
+    void receivePeople(Passenger *pasajero);
 
 private:
     string name;
-    MetroUnit PuertoDirectionPlatform;
-    MetroUnit LimacheDirectionPlatform;
+    MetroUnit *PuertoDirectionPlatform;
+    MetroUnit *LimacheDirectionPlatform;
     string flow;
-    vector<Passenger> AwaitingPeople;
+
 };
 
 #endif // STATION_H
