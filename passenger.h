@@ -3,19 +3,22 @@
 
 #include <vector>
 #include <string>
+#include "time.h"
+using namespace std;
+
+class Station;
 
 class Passenger
 {
 public:
     Passenger();
     ~Passenger();
-    void joinToStation(Station station);
-    void leaveSystem();
     static int actual_passenger_id;
+    static int total_passengers;
+    string generateDirection();
 private:
     int passenger_id;
     string direction;
-    int total_passengers;
 };
 
 #endif // PASSENGER_H
