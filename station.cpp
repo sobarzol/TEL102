@@ -1,5 +1,11 @@
 #include "station.h"
 #include <algorithm>
+#include <vector>
+#include "passenger.h"
+#include "metrounit.h"
+#include "timecontroller.h"
+
+using namespace std;
 extern vector<MetroUnit*> Metros;
 extern vector<Station*> Estaciones;
 
@@ -13,13 +19,47 @@ Station::Station(string name) {
 
 int Station::getTimeToNextMetro(string direction){
     MetroUnit *siguiente = NULL;
+    int distancia_min = 100;
     auto it = find(Estaciones.begin(), Estaciones.end(), this);
     int indice = distance(Estaciones.begin(),it);
 
     for(MetroUnit *metro : Metros){
+        if(metro->getDirection()==direction){
+            if(direction == "Puerto"){
+                for(int j = indice; j < 20; j++){
+                    if(metro->getActualStation() == Estaciones[j]){
+                        if(distancia_min > j-indice){
+                            distancia_min = j-indice;
+                            siguiente = metro;
+                        }
+                        else if(distancia_min == j-indice){
+                            siguiente = siguiente->time_in_transit > metro->time_in_transit ? siguiente : metro;
+                        }
+                    }
+                }
+            }
+            else{
+                for(int j = indice; j > 0; j--){
+                    if(metro->getActualStation() == Estaciones[j]){
+                        if(distancia_min > indice-j){
+                            distancia_min = indice-j;
+                            siguiente = metro;
+                        }
+                        else if(distancia_min == indice-j){
+                            siguiente = siguiente->time_in_transit > metro->time_in_transit ? siguiente : metro;
+                        }
+                    }
+                }
+
+            }
+        }
     }
 }
 
 void Station::setFlow(string flow){
+    this->flow = flow;
+}
 
+void Station::receivePeople(Passenger *pasajero){
+    AwaitingPeople.push_back(pasajero);
 }

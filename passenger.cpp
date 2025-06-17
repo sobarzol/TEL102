@@ -1,4 +1,6 @@
 #include "passenger.h"
+#include "station.h"
+#include <time.h>
 
 Passenger::Passenger() {
     actual_passenger_id++;

@@ -14,19 +14,18 @@ public:
     MetroUnit();
     MetroUnit(int capacity, Station *initial_station);
     int getCapacity();
-    Station getActualStation();
+    Station *getActualStation();
     string getDirection();
     void moveToNextStation();
     void setOn(string direction);
     void ocuppyMetro(Passenger *pasajero);
     int time_in_transit;
-    string state;
 private:
     int capacity;
+    string state;
     vector<Passenger*> Ocupation;
     Station *actual_station;
     string actual_direction;
-
 };
 
 #endif // METROUNIT_H
