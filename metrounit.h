@@ -26,6 +26,7 @@ private:
     vector<Passenger*> Ocupation;
     Station *actual_station;
     string actual_direction;
+    int time_in_transit;
 };
 
 #endif // METROUNIT_H
