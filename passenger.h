@@ -19,6 +19,7 @@ public:
     //void joinToStation(Station *station);
 private:
     int passenger_id;
+    static int next_passenger_id;
     string direction;
 };
 
