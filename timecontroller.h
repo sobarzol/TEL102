@@ -17,6 +17,9 @@ public:
     void moveTimeForward();
     void setMetroOn(MetroUnit *metro, Station *estacion_de_inicio);
     Schedule actual_schedule;
+    void setDay(int dia);
+    void setHour(int hora);
+    void setMinute(int minuto);
 };
 
 #endif // TIMECONTROLLER_H

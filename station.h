@@ -11,20 +11,19 @@ class Passenger;
 class Station
 {
 public:
-    Station();
-    static int Time_Between_Stations[19];
-    Station(string name);
-    int getTimeToNextMetro(string direction);
+    Station(const string &name);
+    //int getTimeToNextMetro(string direction);
     void setFlow(string flow);
-    vector<Passenger*> AwaitingPeople;
+    string getName();
     void receivePeople(Passenger *pasajero);
-
+    string getFlow();
+    void showPassengers();
 private:
     string name;
+    vector<Passenger*> AwaitingPeople;
     MetroUnit *PuertoDirectionPlatform;
     MetroUnit *LimacheDirectionPlatform;
     string flow;
-
 };
 
 #endif // STATION_H

@@ -1,11 +1,15 @@
 #include "metrounit.h"
 #include "passenger.h"
 #include "station.h"
-
+extern string nombre_estaciones[20];
+extern vector<Station *> Estaciones;
 MetroUnit::MetroUnit(){
-    capacity = 340;
+    capacity = 392;
     state = "Fuera de servicio";
     actual_direction = "Sin direccion";
+    actual_station = NULL;
+    Ocupation = vector<Passenger*>();
+    time_in_transit = 0;
 }
 
 MetroUnit::MetroUnit(int capacity, Station *initial_station){
@@ -13,6 +17,7 @@ MetroUnit::MetroUnit(int capacity, Station *initial_station){
     actual_station = initial_station;
     state = "Fuera de servicio";
     actual_direction = "Sin direccion";
+    time_in_transit = 0;
 }
 
 void MetroUnit::ocuppyMetro(Passenger *pasajero){
@@ -25,10 +30,21 @@ void MetroUnit::setOn(string direction){
 }
 
 string MetroUnit::getDirection(){
-    return actual_direction;
+    return this->actual_direction;
 }
 
 Station *MetroUnit::getActualStation(){
     return actual_station;
 }
 
+int MetroUnit::getCapacity() {
+    return capacity;
+}
+
+void MetroUnit::moveToNextStation() {
+    //actual_station = ;
+}
+
+string MetroUnit::getState() {
+    return state;
+}

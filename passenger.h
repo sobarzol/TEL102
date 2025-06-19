@@ -13,9 +13,10 @@ class Passenger
 public:
     Passenger();
     ~Passenger();
-    static int actual_passenger_id;
-    static int total_passengers;
-    string generateDirection();
+    int getId();
+
+    //static int total_passengers;
+    //void joinToStation(Station *station);
 private:
     int passenger_id;
     string direction;

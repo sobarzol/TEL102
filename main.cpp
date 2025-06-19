@@ -4,6 +4,10 @@
 #include "station.h"
 #include "timecontroller.h"
 #include "dia.h"
+#include "schedule.h"
+#include <vector>
+#include <string>
+#include <ctime>
 
 
 using namespace std;
@@ -19,8 +23,12 @@ vector<Station *>Estaciones;
 vector<Schedule*> Horarios;
 int main()
 {
-    for(int i = 0; i < 35;i++){
-        Metros.push_back(new MetroUnit(340,i%2 == 0 ? Estaciones[0]:Estaciones[19]));
+    srand(time(NULL));
+    for(int i = 0; i < 20; i++){        //ciclo para crear estaciones con su nombre especifico
+        Estaciones.push_back(new Station(nombre_estaciones[i]));
+    }
+    for(int i = 0; i < 36;i++){         //ciclo para crear Metros, por defecto en 36 metros, la mitad se genera en limache y la otra en puerto
+        Metros.push_back(new MetroUnit(392,i%2 == 0 ? Estaciones[0]:Estaciones[19]));
     }
 
 
@@ -51,7 +59,7 @@ int main()
 
 MetroUnit *encontrarMetroDisponible(vector<MetroUnit*>metros, int largo, Station *estacion){
     for(MetroUnit *metro : metros){
-        if(metro->state == "Fuera de servicio" && metro->getActualStation() == estacion)
+        if(metro->getState() == "Fuera de servicio" && metro->getActualStation() == estacion)
             return metro;
     }
 }
