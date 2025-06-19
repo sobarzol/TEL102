@@ -16,3 +16,4 @@ add_executable(TEL102_main main.cpp
         schedule.h
         timecontroller.cpp
         timecontroller.h)
+
