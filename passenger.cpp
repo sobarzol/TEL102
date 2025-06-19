@@ -9,7 +9,7 @@ Passenger::Passenger() {
     total_passengers++;
 }
 
-Passenger::~Passenger() {
+/*Passenger::~Passenger() {
     total_passengers--;
 }
 

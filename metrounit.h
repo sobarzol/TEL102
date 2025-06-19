@@ -19,7 +19,7 @@ public:
     void moveToNextStation();
     void setOn(string direction);
     void ocuppyMetro(Passenger *pasajero);
-    int time_in_transit;
+    string getState();
 private:
     int capacity;
     string state;

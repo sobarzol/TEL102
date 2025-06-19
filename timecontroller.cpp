@@ -1,6 +1,8 @@
 #include "timecontroller.h"
-#include "passenger.h"
 #include <iostream>
+#include <thread>
+#include <chrono>
+#include "dia.h"
 
 using namespace std;
 class Passenger;
