@@ -14,7 +14,7 @@ public:
     Passenger();
     ~Passenger();
     int getId();
-
+    string getDirection();
     //static int total_passengers;
     //void joinToStation(Station *station);
 private:

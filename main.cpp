@@ -20,18 +20,19 @@ MetroUnit *encontrarMetroDisponible(vector<MetroUnit*>metros, int largo, Station
 
 
 int Time_Between_Stations[19] = {2, 2, 2, 3, 5, 3, 1, 1, 1, 3, 13, 3, 3, 3, 2, 2, 2, 3, 12};          // vector de informacion de tiempo entre estaciones
-const string nombre_estaciones[20] = {"Puerto", "Bellavista", "Francia", "Barón", "Portales", "Recreo", "Miramar",            //vector de informacion para crear estaciones
+const string nombre_estaciones[20] = {"Puerto", "Bellavista", "Francia", "Baron", "Portales", "Recreo", "Miramar",            //vector de informacion para crear estaciones
                                 "Vina del Mar", "Hospital", "Chorrillos", "El Salto", "Quilpue", "El Sol", "El Belloto",
                                 "Las Americas", "La Concepcion", "Villa Alemana", "Sargento Aldea", "Penablanca", "Limache"};
-
+float Probability_to_descend [20] = {1, 0.04, 0.08, 0.1, 0.107, 0.05, 0.14, 0.4, 0.12, 0.18, 0.015, 0.25, 0.04, 0.1, 0.08, 0.05, 0.2, 0.1, 0.1, 1 };
 vector<MetroUnit*> Metros; //vector de informacion de metros disponibles
 vector<Station *> Estaciones; //vector de informacion de estaciones
 vector<Schedule*> Horarios; //vector de informacion de horarios de salidas de metro
+//
 int main()
 {
     srand(time(NULL));
     for(int i = 0; i < 20; i++){        //ciclo para crear estaciones con su nombre especifico
-        Estaciones.push_back(new Station(nombre_estaciones[i]));
+        Estaciones.push_back(new Station(nombre_estaciones[i],Probability_to_descend[i]));
     }
     for(int i = 0; i < 36;i++){         //ciclo para crear Metros, por defecto en 36 metros, la mitad se genera en limache y la otra en puerto
         Metros.push_back(new MetroUnit(392,i%2 == 0 ? Estaciones[0]:Estaciones[19]));
@@ -82,7 +83,6 @@ int main()
     Time.setHour(hora);
     Time.setMinute(minuto);
 
-    int contador_schedule = 0; //contador para horarios especificos de salida de metro
     while (!((Time.actual_schedule.Day == Dia::Domingo) && ((Time.actual_schedule.Hour == 22)) && ((Time.actual_schedule.Minute == 59)))){
         //Si se esta en un horario de salida de metros se crean metros en ambas estaciones.
 
@@ -93,6 +93,7 @@ int main()
             Time.setMetroOn(encontrarMetroDisponible(Metros,20,Estaciones[0]), Estaciones[0]);
             Time.setMetroOn(encontrarMetroDisponible(Metros,20,Estaciones[19]), Estaciones[19]);
         }
+
 
 
 
@@ -133,6 +134,7 @@ int main()
                 }
                 else {
                     cout << "No hay metro." << endl;
+
                 }
                 if (estacion->getLimachePlatform() != NULL) {
                     cout<<"El metro en direccion Limache tiene: " << estacion->getLimachePlatform()->getOccupation() << " personas." << endl;
@@ -140,6 +142,7 @@ int main()
                 else {
                     cout << "No hay metro." << endl;
                 }
+                cout << endl;
             }
 
             MetroUnit *metroFinal;
@@ -160,10 +163,17 @@ int main()
 
             estacion->departureMetro();
         }
+        cout << "Cantidad de gente metro 1: " << Metros[0]->getOccupation() << " en estacion: " << Metros[0]->getActualStation()->getName() << endl;
+
+
 
         for (MetroUnit* metro: Metros) {
             if (metro->getState() == "En transito") {
                 metro->reduceTimeToArrive();
+            }
+            if (metro->getState() == "Esperando gente") {
+                metro->descendPeople();
+                metro->occupyMetro();
             }
         }
 
@@ -181,4 +191,5 @@ MetroUnit *encontrarMetroDisponible(vector<MetroUnit*>metros, int largo, Station
         if(metro->getState() == "Fuera de servicio" && metro->getActualStation() == estacion)
             return metro;
     }
+    return NULL;
 }

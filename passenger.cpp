@@ -22,3 +22,8 @@ int Passenger::getId() {
 }
 
 
+string Passenger::getDirection() {
+    return direction;
+}
+
+Passenger::~Passenger() = default;

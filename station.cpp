@@ -8,7 +8,7 @@ extern vector<MetroUnit*> Metros;
 extern vector<Station*> Estaciones;
 
 
-Station::Station(const string &name) : name(name) {
+Station::Station(const string &name, float aProbability) : name(name), probability(aProbability){
     flow = "muy bajo";
 }
 
@@ -28,7 +28,7 @@ Station::Station(const string &name) : name(name) {
                             siguiente = metro;
                         }
                         else if(distancia_min == j-indice){
-                            siguiente = siguiente->time_in_transit > metro->time_in_transit ? siguiente : metro;
+                            siguiente = siguiente->time_to_arrive < metro->time_in_transit ? siguiente : metro;
                         }
                     }
                 }
@@ -41,7 +41,7 @@ Station::Station(const string &name) : name(name) {
                             siguiente = metro;
                         }
                         else if(distancia_min == indice-j){
-                            siguiente = siguiente->time_in_transit > metro->time_in_transit ? siguiente : metro;
+                            siguiente = siguiente->time_to_arrive < metro->time_in_transit ? siguiente : metro;
                         }
                     }
                 }
@@ -112,4 +112,8 @@ void Station::setPlatformFree(string platform) {
     else if (platform == "Limache") {
         LimacheDirectionPlatform = NULL;
     }
+}
+
+vector<Passenger*> &Station::getAwaitingPeople() {
+    return AwaitingPeople;
 }

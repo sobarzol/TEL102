@@ -18,11 +18,12 @@ public:
     string getDirection();
     void moveToNextStation();
     void setOn(string direction);
-    void ocuppyMetro(Passenger *pasajero);
+    void occupyMetro();
     string getState();
     int getOccupation();
     void reduceTimeToArrive();
     void setOff();
+    void descendPeople();
 private:
     int capacity;
     string state;
