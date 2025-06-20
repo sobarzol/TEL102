@@ -84,6 +84,8 @@ int main()
 
     int contador_schedule = 0; //contador para horarios especificos de salida de metro
     while (!((Time.actual_schedule.Day == Dia::Domingo) && ((Time.actual_schedule.Hour == 22)) && ((Time.actual_schedule.Minute == 59)))){
+        //Si se esta en un horario de salida de metros se crean metros en ambas estaciones.
+
         auto it = std::find_if(Horarios.begin(), Horarios.end(), [&](Schedule* obj) {
                 return *obj == Time.actual_schedule;  // Aquí sí comparas contenido usando tu operador ==
             });
@@ -91,6 +93,7 @@ int main()
             Time.setMetroOn(encontrarMetroDisponible(Metros,20,Estaciones[0]), Estaciones[0]);
             Time.setMetroOn(encontrarMetroDisponible(Metros,20,Estaciones[19]), Estaciones[19]);
         }
+
 
 
 
@@ -137,12 +140,32 @@ int main()
                 else {
                     cout << "No hay metro." << endl;
                 }
-
-
             }
+
+            MetroUnit *metroFinal;
+            if (estacion == Estaciones[0]) {
+                metroFinal = estacion->getPuertoPlatform();
+                if (metroFinal != NULL) {
+                    metroFinal->setOff();
+                    estacion->setPlatformFree("Puerto");
+                }
+            }
+            if (estacion == Estaciones[19]) {
+                metroFinal = estacion->getLimachePlatform();
+                if (metroFinal != NULL) {
+                    metroFinal->setOff();
+                    estacion->setPlatformFree("Limache");
+                }
+            }
+
+            estacion->departureMetro();
         }
 
-
+        for (MetroUnit* metro: Metros) {
+            if (metro->getState() == "En transito") {
+                metro->reduceTimeToArrive();
+            }
+        }
 
 
 

@@ -89,7 +89,27 @@ void Station::setMetroPlatform(MetroUnit *metro) {
     if (metro->getDirection() == "Puerto") {
         PuertoDirectionPlatform = metro;
     }
-    else {
+    else if (metro->getDirection() == "Limache") {
         LimacheDirectionPlatform = metro;
+    }
+}
+
+void Station::departureMetro() {
+    if (PuertoDirectionPlatform != NULL) {
+        PuertoDirectionPlatform->moveToNextStation();
+        PuertoDirectionPlatform = NULL;
+    }
+    if (LimacheDirectionPlatform != NULL) {
+        LimacheDirectionPlatform->moveToNextStation();
+        LimacheDirectionPlatform = NULL;
+    }
+}
+
+void Station::setPlatformFree(string platform) {
+    if (platform == "Puerto") {
+        PuertoDirectionPlatform = NULL;
+    }
+    else if (platform == "Limache") {
+        LimacheDirectionPlatform = NULL;
     }
 }

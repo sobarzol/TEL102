@@ -21,13 +21,15 @@ public:
     void ocuppyMetro(Passenger *pasajero);
     string getState();
     int getOccupation();
+    void reduceTimeToArrive();
+    void setOff();
 private:
     int capacity;
     string state;
     vector<Passenger*> Occupation;
     Station *actual_station;
     string actual_direction;
-    int time_in_transit;
+    int time_to_arrive;
 };
 
 #endif // METROUNIT_H

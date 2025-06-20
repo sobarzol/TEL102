@@ -22,6 +22,8 @@ public:
     MetroUnit *getPuertoPlatform();
     MetroUnit *getLimachePlatform();
     void setMetroPlatform(MetroUnit *metro);
+    void departureMetro();
+    void setPlatformFree(string platform);
 private:
     string name;
     vector<Passenger*> AwaitingPeople;

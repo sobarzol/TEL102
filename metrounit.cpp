@@ -1,6 +1,8 @@
 #include "metrounit.h"
 #include "passenger.h"
 #include "station.h"
+#include <algorithm>
+
 extern string nombre_estaciones[20];
 extern vector<Station *> Estaciones;
 MetroUnit::MetroUnit(){
@@ -9,7 +11,6 @@ MetroUnit::MetroUnit(){
     actual_direction = "Sin direccion";
     actual_station = NULL;
     Occupation = vector<Passenger*>();
-    time_in_transit = 0;
 }
 
 MetroUnit::MetroUnit(int capacity, Station *initial_station){
@@ -17,7 +18,6 @@ MetroUnit::MetroUnit(int capacity, Station *initial_station){
     actual_station = initial_station;
     state = "Fuera de servicio";
     actual_direction = "Sin direccion";
-    time_in_transit = 0;
 }
 
 void MetroUnit::ocuppyMetro(Passenger *pasajero){
@@ -27,6 +27,12 @@ void MetroUnit::ocuppyMetro(Passenger *pasajero){
 void MetroUnit::setOn(string direction){
     actual_direction = direction;
     state = "Esperando gente";
+}
+
+void MetroUnit::setOff() {
+    state = "Fuera de servicio";
+    actual_direction = "Sin direccion";
+    Occupation.clear();
 }
 
 string MetroUnit::getDirection(){
@@ -42,7 +48,8 @@ int MetroUnit::getCapacity() {
 }
 
 void MetroUnit::moveToNextStation() {
-    //actual_station = ;
+    time_to_arrive = 1;
+    state = "En transito";
 }
 
 string MetroUnit::getState() {
@@ -51,4 +58,26 @@ string MetroUnit::getState() {
 
 int MetroUnit::getOccupation() {
     return Occupation.size();
+}
+
+void MetroUnit::reduceTimeToArrive() {
+    time_to_arrive--;
+    if (time_to_arrive == 0) {
+        state = "Esperando gente";
+        auto it = std::find_if(Estaciones.begin(), Estaciones.end(),[this](Station *obj)  {
+                return obj == actual_station;  // Aquí sí comparas contenido usando tu operador ==
+            });
+        if (it != Estaciones.end()) {
+            int indice = distance(Estaciones.begin(),it);
+            if (actual_direction == "Puerto") {
+                actual_station = Estaciones[indice-1];
+                Estaciones[indice-1]->setMetroPlatform(this);
+            }
+            else if (actual_direction == "Limache") {
+                actual_station = Estaciones[indice+1];
+                Estaciones[indice+1]->setMetroPlatform(this);
+            }
+        }
+    }
+
 }
