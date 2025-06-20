@@ -18,6 +18,10 @@ public:
     void receivePeople(Passenger *pasajero);
     string getFlow();
     void showPassengers();
+    int getTotalPassengers();
+    MetroUnit *getPuertoPlatform();
+    MetroUnit *getLimachePlatform();
+    void setMetroPlatform(MetroUnit *metro);
 private:
     string name;
     vector<Passenger*> AwaitingPeople;

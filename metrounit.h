@@ -20,10 +20,11 @@ public:
     void setOn(string direction);
     void ocuppyMetro(Passenger *pasajero);
     string getState();
+    int getOccupation();
 private:
     int capacity;
     string state;
-    vector<Passenger*> Ocupation;
+    vector<Passenger*> Occupation;
     Station *actual_station;
     string actual_direction;
     int time_in_transit;

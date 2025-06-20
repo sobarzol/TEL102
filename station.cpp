@@ -9,7 +9,7 @@ extern vector<Station*> Estaciones;
 
 
 Station::Station(const string &name) : name(name) {
-    flow = "bajo";
+    flow = "muy bajo";
 }
 
 /*int Station::getTimeToNextMetro(string direction){
@@ -70,5 +70,26 @@ string Station::getName() {
 void Station::showPassengers() {
     for (Passenger *passenger: AwaitingPeople) {
         cout << passenger->getId() << endl;
+    }
+}
+
+int Station::getTotalPassengers() {
+    return AwaitingPeople.size();
+}
+
+MetroUnit *Station::getPuertoPlatform() {
+    return PuertoDirectionPlatform;
+}
+
+MetroUnit *Station::getLimachePlatform() {
+    return LimacheDirectionPlatform;
+}
+
+void Station::setMetroPlatform(MetroUnit *metro) {
+    if (metro->getDirection() == "Puerto") {
+        PuertoDirectionPlatform = metro;
+    }
+    else {
+        LimacheDirectionPlatform = metro;
     }
 }

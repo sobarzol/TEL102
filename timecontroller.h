@@ -20,6 +20,7 @@ public:
     void setDay(int dia);
     void setHour(int hora);
     void setMinute(int minuto);
+    string getDay();
 };
 
 #endif // TIMECONTROLLER_H

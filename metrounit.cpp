@@ -8,7 +8,7 @@ MetroUnit::MetroUnit(){
     state = "Fuera de servicio";
     actual_direction = "Sin direccion";
     actual_station = NULL;
-    Ocupation = vector<Passenger*>();
+    Occupation = vector<Passenger*>();
     time_in_transit = 0;
 }
 
@@ -21,7 +21,7 @@ MetroUnit::MetroUnit(int capacity, Station *initial_station){
 }
 
 void MetroUnit::ocuppyMetro(Passenger *pasajero){
-    Ocupation.push_back(pasajero);
+    Occupation.push_back(pasajero);
 }
 
 void MetroUnit::setOn(string direction){
@@ -47,4 +47,8 @@ void MetroUnit::moveToNextStation() {
 
 string MetroUnit::getState() {
     return state;
+}
+
+int MetroUnit::getOccupation() {
+    return Occupation.size();
 }
