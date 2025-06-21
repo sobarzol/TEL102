@@ -130,3 +130,7 @@ void MetroUnit::descendPeople() {
     }
 
 }
+
+int MetroUnit::getTimeToArrive() {
+    return time_to_arrive;
+}

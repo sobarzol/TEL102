@@ -24,6 +24,9 @@ public:
     void reduceTimeToArrive();
     void setOff();
     void descendPeople();
+
+    int getTimeToArrive();
+
 private:
     int capacity;
     string state;
